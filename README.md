@@ -1,3 +1,3 @@
 # Cms partials
 
-Requires globally installed `@sscode/vue-event-bus` as `window.EventBus`
+Requires globally installed `@ssdcode/vue-event-bus` as `window.EventBus`
