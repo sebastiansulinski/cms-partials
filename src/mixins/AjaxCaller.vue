@@ -20,6 +20,9 @@
             requestData() {
                 return {};
             },
+            requestConfig() {
+                return {};
+            }
         },
         created() {
             axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -56,7 +59,8 @@
                 } else {
                     requestData.params = data || this.requestData;
                 }
-                axios.request(requestData)
+
+                axios.request({...requestData, ...this.requestConfig})
                     .then(success)
                     .catch(failure);
             },
