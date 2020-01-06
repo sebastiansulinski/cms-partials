@@ -3,4 +3,5 @@ export { default as Disabler } from './mixins/Disabler';
 export { default as Processor } from './mixins/Processor';
 export { default as AjaxCaller } from './mixins/AjaxCaller';
 export { default as EscapeHandler } from './mixins/EscapeHandler';
+export { default as OnClickOutside } from './mixins/OnClickOutside';
 export { default as ErrorHandler } from './core/ErrorHandler';
