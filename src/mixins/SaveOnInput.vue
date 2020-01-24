@@ -2,6 +2,7 @@
 import AjaxCaller from './AjaxCaller'
 import ErrorHandler from '../core/ErrorHandler'
 export default {
+  name: 'save-on-input',
   mixins: [AjaxCaller],
   props: {
     field: {
