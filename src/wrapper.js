@@ -1,4 +1,5 @@
 export { default as Helper } from './core/Helper'
+export { default as ApiCaller } from './core/ApiCaller'
 export { default as Disabler } from './mixins/Disabler'
 export { default as Processor } from './mixins/Processor'
 export { default as AjaxCaller } from './mixins/AjaxCaller'
