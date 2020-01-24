@@ -1,69 +1,54 @@
 <script>
-    import axios from 'axios';
-    import Processor from './Processor';
-    export default {
-        mixins: [Processor],
-        props: {
-            action: {
-                type: String,
-                default: '/'
-            },
-            method: {
-                type: String,
-                default: 'post'
-            }
-        },
-        computed: {
-            endPoint() {
-                return this.action;
-            },
-            requestData() {
-                return {};
-            },
-            requestConfig() {
-                return {};
-            }
-        },
-        created() {
-            axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-            let token = document.head.querySelector('meta[name="csrf-token"]');
-            if (token) {
-                axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-            }
-        },
-        methods: {
-            makeAjaxCall(success, failure) {
-                this.startProcessingAjaxCall();
-                this.makeAjaxRequest(success, failure);
-            },
-            startProcessingAjaxCall() {
-                this.startProcessing();
-                this.startProcessingAjaxCallEvent();
-            },
-            startProcessingAjaxCallEvent() {},
-            stopProcessingAjaxCall() {
-                this.stopProcessing();
-                this.stopProcessingAjaxCallEvent();
-            },
-            stopProcessingAjaxCallEvent() {},
-            makeAjaxRequest(success, failure, data, url, method) {
-                let requestData = {
-                    url: url || this.endPoint,
-                    method: (method || this.method).toLowerCase(),
-                    params: {},
-                    data: {}
-                };
-
-                if (['post', 'put', 'patch'].includes(requestData.method)) {
-                    requestData.data = data || this.requestData;
-                } else {
-                    requestData.params = data || this.requestData;
-                }
-
-                axios.request({...requestData, ...this.requestConfig})
-                    .then(success)
-                    .catch(failure);
-            },
-        }
+import Processor from './Processor'
+import ApiCaller from '../core/ApiCaller'
+export default {
+  mixins: [Processor],
+  props: {
+    action: {
+      type: String,
+      default: '/'
+    },
+    method: {
+      type: String,
+      default: 'post'
     }
+  },
+  computed: {
+    endPoint() {
+      return this.action
+    },
+    requestData() {
+      return {}
+    },
+    requestConfig() {
+      return {}
+    }
+  },
+  methods: {
+    makeAjaxCall(success, failure) {
+      this.startProcessingAjaxCall()
+      this.makeAjaxRequest(success, failure)
+    },
+    startProcessingAjaxCall() {
+      this.startProcessing()
+      this.startProcessingAjaxCallEvent()
+    },
+    startProcessingAjaxCallEvent() {},
+    stopProcessingAjaxCall() {
+      this.stopProcessing()
+      this.stopProcessingAjaxCallEvent()
+    },
+    stopProcessingAjaxCallEvent() {},
+    makeAjaxRequest(success, failure, payload, url, method) {
+      ApiCaller.request(
+        url || this.endPoint,
+        method || this.method,
+        payload || this.requestData,
+        this.requestConfig
+      )
+        .then(success)
+        .catch(failure)
+    }
+  }
+}
 </script>
