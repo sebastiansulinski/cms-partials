@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'OnClickOutside',
   props: {
     do: {
       type: Function,

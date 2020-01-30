@@ -1,8 +1,8 @@
 <script>
 import AjaxCaller from './AjaxCaller'
-import ErrorHandler from '../core/ErrorHandler'
+import ErrorReporter from '../core/ErrorReporter'
 export default {
-  name: 'save-on-input',
+  name: 'SaveOnInput',
   mixins: [AjaxCaller],
   props: {
     field: {
@@ -43,7 +43,7 @@ export default {
         window.location.href = error.response.url
         return
       }
-      ErrorHandler.showError(error, this.stopProcessingAjaxCall)
+      ErrorReporter.report(error, this.field, this.stopProcessingAjaxCall)
     }
   },
   render() {
