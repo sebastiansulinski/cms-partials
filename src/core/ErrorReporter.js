@@ -5,14 +5,14 @@ export default class ErrorReporter {
     }
     EventBus.fire(type || 'top-warning', {
       id: id || 'top-warning',
-      message: ErrorReporter.message(error)
+      message: error,
     })
   }
 
-  static message(error) {
+  static message(error, message = null) {
     if (typeof error === 'string') {
-      return error
+      return error;
     }
-    return ((error.response || {}).data || {}).message || 'Request failed'
+    return error?.message || error.response?.data?.message || message || 'Request failed';
   }
 }

@@ -12,7 +12,11 @@ export default {
     event: {
       type: String,
       default: 'input'
-    }
+    },
+    errorMessage: {
+      type: String,
+      default: 'Invalid input',
+    },
   },
   data() {
     return {
@@ -43,7 +47,11 @@ export default {
         window.location.href = error.response.url
         return
       }
-      ErrorReporter.report(error, this.field, this.stopProcessingAjaxCall)
+      ErrorReporter.report(
+          ErrorReporter.message(error, this.errorMessage),
+          this.field,
+          this.stopProcessingAjaxCall
+      )
     }
   },
   render() {
