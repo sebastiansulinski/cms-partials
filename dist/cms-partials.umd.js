@@ -5840,7 +5840,7 @@ var ErrorReporter_ErrorReporter = /*#__PURE__*/function () {
         return error;
       }
 
-      return (error === null || error === void 0 ? void 0 : error.message) || ((_error$response = error.response) === null || _error$response === void 0 ? void 0 : (_error$response$data = _error$response.data) === null || _error$response$data === void 0 ? void 0 : _error$response$data.message) || _message || 'Request failed';
+      return ((_error$response = error.response) === null || _error$response === void 0 ? void 0 : (_error$response$data = _error$response.data) === null || _error$response$data === void 0 ? void 0 : _error$response$data.message) || _message || (error === null || error === void 0 ? void 0 : error.message) || 'Request failed';
     }
   }]);
 

@@ -46,22 +46,32 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off",
+      "no-debugger": "off",
+      "no-prototype-builtins": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
   },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "postcss": {
     "plugins": {
       "tailwindcss": "tailwind.config.js",
       "autoprefixer": {}
     }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  }
 }
