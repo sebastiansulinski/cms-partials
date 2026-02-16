@@ -1,6 +1,7 @@
 {
   "name": "@ssdcode/cms-partials",
-  "version": "1.3.4",
+  "version": "1.3.5",
+  "deprecated": "This package is deprecated and no longer maintained.",
   "repository": {
     "type": "git",
     "url": "https://github.com/sebastiansulinski/cms-partials.git"
